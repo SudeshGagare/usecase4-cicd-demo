@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<sub-flow name="Display-Message-Flow" doc:id="9e18237d-cba6-47ab-828e-49bc679c63c4" >
+		<logger level="INFO" doc:name="Logger" doc:id="7757756e-6c2f-4b64-9074-d7dbb1508588" message="#['Display-Message-Flow is Starting']"/>
+		<ee:transform doc:name="Transform Message" doc:id="3c3199c2-d796-4634-b297-f3c97f4baa57" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"Message": "Hello World"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="1d5a8656-b518-40c1-8da7-0582b640350f" message="#['Display-Message-Flow is Ending']"/>
+	</sub-flow>
+</mule>

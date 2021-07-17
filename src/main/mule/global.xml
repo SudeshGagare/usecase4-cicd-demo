@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway"
+	xmlns:secure-properties="http://www.mulesoft.org/schema/mule/secure-properties"
+	xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd 
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd
+http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd">
+	
+	<http:listener-config name="sample-hello-world-api-httpListenerConfig">
+        <http:listener-connection host="0.0.0.0" port="${secure::http.port}" />
+    </http:listener-config>
+    <apikit:config name="${router.name}" api="resource::14064b3e-c89a-41b6-8dc2-1c441e5c907a:sample-hello-world-api:1.0.0:raml:zip:sample-hello-world-api.raml" outboundHeadersMapName="${router.outbound}" httpStatusVarName="${router.httpstatusvar}" />
+	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="922e4519-02cf-4677-8b60-3eb1242f99f2" file="properties/${env}.yaml" key="${token}" >
+		<secure-properties:encrypt algorithm="Blowfish" />
+	</secure-properties:config>
+	<configuration-properties doc:name="Configuration properties" doc:id="c8413ca2-b3ce-445f-a59c-104435c4e9dd" file="properties/${env}.yaml" />
+	<global-property doc:name="Global Property" doc:id="97245e5f-a177-409a-a94c-52ed463029ef" name="token" value="mulesoftmulesoft" />
+	<global-property doc:name="Global Property" doc:id="ed477821-df4b-4924-ba5e-17f4f3ec7c64" name="env" value="dev" />
+	<api-gateway:autodiscovery apiId="17072609" ignoreBasePath="true" doc:name="API Autodiscovery" doc:id="8b8899c7-72d1-4a0a-8159-f8874d8e7745" flowRef="sample-hello-world-api-main" />
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</mule>

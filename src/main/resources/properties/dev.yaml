@@ -1,0 +1,7 @@
+http:
+  port: "![7lfNJW6/zOc=]"
+  
+router:
+  name: "sample-hello-world-api-config"
+  outbound: "outboundHeaders"
+  httpstatusvar: "httpStatus"
