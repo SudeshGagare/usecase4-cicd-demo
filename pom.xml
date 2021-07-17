@@ -35,6 +35,11 @@
             <environment>Sandbox</environment>
             <workerType>MICRO</workerType>
             <objectStoreV2>true</objectStoreV2>
+            <properties>
+            	<anypoint.platform.client_id>3d483fe568c74e0a9f533590bb90be22</anypoint.platform.client_id>
+            	<anypoint.platform.client_secret>66b04F362d70427e8FFFa00D4D1bE753</anypoint.platform.client_secret>
+            
+            </properties>
         </cloudHubDeployment>
     </configuration>
 		</plugin>
